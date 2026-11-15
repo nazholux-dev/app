@@ -20,18 +20,7 @@ const config: CapacitorConfig = {
   },
 
   plugins: {
-    // اسپلش نیتیو تا اولین نقاشی لودر وب می‌ماند (index.html خودش آن را می‌بندد)؛
-    // launchShowDuration فقط سقف اطمینان است اگر سایت دیر لود شد.
-    SplashScreen: {
-      launchShowDuration: 6000,
-      launchAutoHide: true,
-      launchFadeOutDuration: 300,
-      backgroundColor: '#171512',
-      androidScaleType: 'CENTER_CROP',
-      showSpinner: false,
-      splashFullScreen: true,
-      splashImmersive: false
-    },
+    SplashScreen: { launchShowDuration: 800, backgroundColor: '#171512', showSpinner: false, androidScaleType: 'CENTER_CROP' },
     PushNotifications: { presentationOptions: ['badge', 'sound', 'alert'] },
     LocalNotifications: { smallIcon: 'ic_stat_nazholux', iconColor: '#C9A24B' }
   }
