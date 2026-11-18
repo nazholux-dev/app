@@ -43,6 +43,10 @@ for (const [name, attr] of metas) {
     xml = xml.replace('</application>', `        <meta-data android:name="${name}" ${attr} />\n    </application>`);
   }
 }
+// امنیت: جلوگیری از گرفتن بکاپ داده‌های اپ (مثلاً با adb backup)
+if (/android:allowBackup="true"/.test(xml)) xml = xml.replace(/android:allowBackup="true"/, 'android:allowBackup="false"');
+else if (!/android:allowBackup=/.test(xml)) xml = xml.replace('<application', '<application android:allowBackup="false"');
+
 if (!xml.includes('UpdateFileProvider')) {
   xml = xml.replace('</application>', '        <provider android:name=".UpdateFileProvider" android:authorities="com.nazholux.app.updateprovider" android:exported="false" android:grantUriPermissions="true">\n            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/nazholux_update_paths" />\n        </provider>\n    </application>');
 }
